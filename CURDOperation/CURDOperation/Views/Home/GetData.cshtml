@@ -1,0 +1,34 @@
+﻿@model CURDOperation.Models.ProductDetails
+
+<a href="/Home/AddProduct">Add product</a>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>ProductName</td>
+            <td>Product Description</td>
+            <td>Price</td>
+        </tr>
+    </thead>
+    @if (Model.productsList.Count > 0)
+    {
+        foreach (var product in Model.productsList)
+        {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <a href="/Home/UpdateProduct/?Id=@product.Id">Update</a>
+                        <a href="/Home/DeleteProduct/?Id=@product.Id">Delete</a>
+                    </td>
+                </tr>
+        }
+    }else
+    {
+        <tr>
+            <td>Sorry no data found</td>
+        </tr>
+    }
+</table>
